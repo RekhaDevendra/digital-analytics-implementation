@@ -41,7 +41,7 @@ Expected dataLayer payload:
 ## Console helper  
 
 ```javascript
-{
+
 (function () {
   var originalPush = window.dataLayer.push;
 
@@ -50,7 +50,6 @@ Expected dataLayer payload:
     return originalPush.apply(window.dataLayer, arguments);
   };
 })();
-}
 
 ## Final QA Result
 Passed

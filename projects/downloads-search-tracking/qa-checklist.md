@@ -23,7 +23,7 @@ Expected dataLayer payload:
   search_method: 'search_button'
 }
 
-Test Cases
+## Test Cases
 Scenario	Expected Result	Status
 Keyword search + button click	Event fires once	Pass
 Keyword search + Enter key	search_method = enter_key	Pass
@@ -33,9 +33,11 @@ Empty search + no filters	No event fires	Pass
 Duplicate click	No duplicate event within 1 second	Pass
 GA4 tag fires	view_search_results fires	Pass
 Console dataLayer test	Correct payload logged	Pass
-Browser Console Validation
 
-Temporary console helper:
+## Browser Console Validation  
+## Console helper  
+
+```javascript
 
 (function () {
   var originalPush = window.dataLayer.push;
@@ -45,7 +47,8 @@ Temporary console helper:
     return originalPush.apply(window.dataLayer, arguments);
   };
 })();
-Final QA Result
+
+## Final QA Result
 Passed
 
 Commit message:

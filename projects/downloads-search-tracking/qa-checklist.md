@@ -24,21 +24,24 @@ Expected dataLayer payload:
 }
 
 ## Test Cases
-Scenario	Expected Result	Status
-Keyword search + button click	Event fires once	Pass
-Keyword search + Enter key	search_method = enter_key	Pass
-Keyword + document type + file type	All values captured	Pass
-Filters only + search button	search_term = (not provided)	Pass
-Empty search + no filters	No event fires	Pass
-Duplicate click	No duplicate event within 1 second	Pass
-GA4 tag fires	view_search_results fires	Pass
-Console dataLayer test	Correct payload logged	Pass
+
+| Scenario                            | Expected Result                    | Status |
+| ----------------------------------- | ---------------------------------- | ------ |
+| Keyword search + button click       | Event fires once                   | Pass   |
+| Keyword search + Enter key          | `search_method = enter_key`        | Pass   |
+| Keyword + document type + file type | All values captured                | Pass   |
+| Filters only + search button        | `search_term = (not provided)`     | Pass   |
+| Empty search + no filters           | No event fires                     | Pass   |
+| Duplicate click                     | No duplicate event within 1 second | Pass   |
+| GA4 tag fires                       | `view_search_results` fires        | Pass   |
+| Console dataLayer test              | Correct payload logged             | Pass   |
+
 
 ## Browser Console Validation  
 ## Console helper  
 
 ```javascript
-
+{
 (function () {
   var originalPush = window.dataLayer.push;
 
@@ -47,6 +50,7 @@ Console dataLayer test	Correct payload logged	Pass
     return originalPush.apply(window.dataLayer, arguments);
   };
 })();
+}
 
 ## Final QA Result
 Passed

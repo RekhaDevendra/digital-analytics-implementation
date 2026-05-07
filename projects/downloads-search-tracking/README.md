@@ -94,26 +94,30 @@ GA4 Event Tag
 ↓
 GA4 Event Name: view_search_results
 
+---
+
 ## QA Validation
 Validation was completed using:
 
-GTM Preview
-Browser Console
-dataLayer validation
-GA4 DebugView
-Manual search testing
+- GTM Preview
+- Browser Console
+- dataLayer validation
+- GA4 DebugView
+- Manual search testing
 
-Confirmed scenarios:
+### Confirmed scenarios:
 
-Keyword search + button click
-Enter key submission
-Filter-only searches
-Empty search prevention
-Duplicate prevention
-GA4 tag firing validation
+- Keyword search + button click
+- Enter key submission
+- Filter-only searches
+- Empty search prevention
+- Duplicate prevention
+- GA4 tag firing validation
 
-Detailed QA documentation is available in:
+### Detailed QA documentation is available in:
 qa-checklist.md
+
+---
 
 ## Final Status
 

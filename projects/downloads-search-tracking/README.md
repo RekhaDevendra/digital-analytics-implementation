@@ -17,12 +17,15 @@ This tracking was required because the Downloads page does not update the URL wi
 
 ## Business Requirement
 
-Stakeholders needed visibility into:
+Stakeholders needed visibility into how users interact with the Downloads page search bar and filters.
 
-- What users are searching for
-- Which file types are most requested
-- Which document categories are most used
-- How users interact with the Downloads page
+The tracking helps answer:
+
+- What are users searching for?
+- Which document types are most used?
+- Which file types are most requested?
+- How often users search before downloading files?
+- Whether Downloads page search behavior can support future UX and content decisions.
 
 This supports:
 
@@ -47,3 +50,5 @@ The listener pushes a custom event into the dataLayer:
 
 ```javascript
 event: 'download_search'
+
+

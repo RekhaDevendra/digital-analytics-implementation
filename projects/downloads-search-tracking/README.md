@@ -77,6 +77,7 @@ event: 'download_search'
 | Search button          | `#searchFilesForm button[type="submit"]` |
 
 ## When users search with filters but no keyword:
+
 ```javascript
 search_term = "(not provided)"
 

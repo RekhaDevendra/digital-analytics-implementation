@@ -1,0 +1,90 @@
+<script>
+(function () {
+  if (window.__downloadSearchListenerAdded) return;
+  window.__downloadSearchListenerAdded = true;
+
+  var lastSignature = '';
+  var lastTime = 0;
+
+  function getText(select) {
+    if (!select || !select.options || select.selectedIndex < 0) return '';
+    return select.options[select.selectedIndex].text.replace(/^\s+|\s+$/g, '');
+  }
+
+  function pushDownloadSearch(method) {
+    var searchInput = document.querySelector('#searchPhrase');
+    var documentType = document.querySelector('#documentType');
+    var mimeType = document.querySelector('#mimeType');
+
+    var searchTerm = searchInput ? searchInput.value.replace(/^\s+|\s+$/g, '') : '';
+    var documentTypeText = getText(documentType);
+    var mimeTypeText = getText(mimeType);
+
+    if (!searchTerm) {
+      searchTerm = '(not provided)';
+    }
+
+    if (
+      searchTerm === '(not provided)' &&
+      (!documentTypeText || documentTypeText === 'Document type') &&
+      (!mimeTypeText || mimeTypeText === 'File type')
+    ) {
+      return;
+    }
+
+    var signature = searchTerm + '|' + documentTypeText + '|' + mimeTypeText;
+    var now = new Date().getTime();
+
+    if (signature === lastSignature && now - lastTime < 1000) return;
+
+    lastSignature = signature;
+    lastTime = now;
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'download_search',
+      search_term: searchTerm,
+      download_document_type: documentTypeText,
+      download_file_type: mimeTypeText,
+      search_location: 'downloads_page',
+      search_method: method
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    var el = e.target;
+
+    while (el && el !== document) {
+      if (
+        el.matches &&
+        el.matches('#searchFilesForm button[type="submit"], #searchFilesForm .btn.btn-default')
+      ) {
+        pushDownloadSearch('search_button');
+        return;
+      }
+      el = el.parentNode;
+    }
+  }, true);
+
+  document.addEventListener('keydown', function (e) {
+    var el = e.target;
+
+    if (
+      e.key === 'Enter' &&
+      el &&
+      el.matches &&
+      el.matches('#searchFilesForm #searchPhrase')
+    ) {
+      pushDownloadSearch('enter_key');
+    }
+  }, true);
+
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+
+    if (form && form.id === 'searchFilesForm') {
+      pushDownloadSearch('form_submit');
+    }
+  }, true);
+})();
+</script>

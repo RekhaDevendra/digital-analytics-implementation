@@ -15,7 +15,7 @@ This repository contains real-world tracking implementations across web analytic
 
 ## Projects
 
-### Downloads Search Tracking — Schluter
+### Downloads Search Tracking — Enterprise Manufacturing Website
 
 Implemented GA4 + GTM tracking for Downloads page search behavior where URL-based tracking was not possible.
 

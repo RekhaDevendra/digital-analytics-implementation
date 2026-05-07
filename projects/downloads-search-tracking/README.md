@@ -1,8 +1,8 @@
-# Downloads Search Tracking — Schluter
+# Downloads Search Tracking — Enterprise Manufacturing Website
 
 ## Project Overview
 
-Implemented GA4 + Google Tag Manager tracking for the Downloads page search functionality on the Schluter website.
+Implemented GA4 + Google Tag Manager tracking for the Downloads page search functionality for a large enterprise manufacturing website with global US and Canada properties.
 
 The objective was to capture:
 

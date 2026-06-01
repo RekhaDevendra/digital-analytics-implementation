@@ -1,0 +1,34 @@
+## Challenges & Solutions
+
+### Challenge 1: Missing Transaction ID in Data Layer
+
+The purchase transaction ID was not available in the ecommerce data layer payload.
+
+**Solution**
+
+Created a GTM URL Variable to extract the `transaction_id` parameter from the purchase confirmation page URL and passed it to the GA4 purchase event.
+
+---
+
+### Challenge 2: Coupon Code Not Available in Data Layer
+
+The applied coupon code was displayed on the page but was not included in the purchase data layer event.
+
+**Solution**
+
+Used a GTM DOM Element Variable with a CSS selector to extract the coupon code directly from the confirmation page and send it as a GA4 purchase parameter.
+
+---
+
+### Challenge 3: Purchase Event Validation
+
+During QA testing, the purchase event was initially firing outside of the confirmed purchase flow.
+
+**Solution**
+
+The trigger logic was redesigned to fire only when:
+
+- Custom Event = purchase
+- transaction_id exists
+
+This ensured purchase tracking occurred only after a valid transaction was completed.

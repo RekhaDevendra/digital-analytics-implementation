@@ -3,18 +3,21 @@
 During testing, the purchase event was initially firing incorrectly on the product list page.
 
 ### Root Cause
+
 The purchase tag relied on a page-based trigger that could evaluate under unintended conditions.
 
 ### Resolution
+
 The trigger was redesigned to use:
 
 - Custom Event = purchase
 - URL transaction_id validation
 
-This ensured the purchase event only fired after a confirmed transaction.
+This ensured the purchase event fired only after a confirmed transaction.
 
 ### Validation
-A complete end-to-end user journey was tested:
+
+A complete end-to-end ecommerce journey was tested:
 
 view_item_list → view_item → add_to_cart → begin_checkout → add_shipping_info → add_payment_info → purchase
 

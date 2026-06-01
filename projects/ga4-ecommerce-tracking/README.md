@@ -4,13 +4,15 @@
 
 This project demonstrates the end-to-end implementation of Google Analytics 4 Ecommerce Tracking using Google Tag Manager on a custom Shopify store.
 
-The implementation was completed under real-world constraints where developer support was unavailable and critical purchase information was missing from the dataLayer.
+The implementation was completed under real-world constraints where developer support was unavailable and certain business-critical parameters were not available directly in the data layer.
+
+To address these limitations, additional data was collected through URL parameter extraction, DOM element extraction, and custom GTM configuration while maintaining GA4 ecommerce best practices.
 
 The objective was to design a scalable tracking solution that accurately captures the full ecommerce funnel while minimizing technical debt.
 
 ---
 
-## Business Objective
+## Measurement Objective
 
 Implement complete GA4 ecommerce tracking for:
 

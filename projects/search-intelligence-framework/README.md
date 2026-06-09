@@ -36,76 +36,102 @@ Rather than reporting metrics independently, the goal was to create a framework 
 
 ### Stage 1: Market Demand Analysis
 
-Objective:
+#### Business Objective
 
-Understand what topics, products, and questions customers are researching across the market.
+Develop a market-level understanding of customer demand, emerging search trends, and information needs to identify opportunities for content strategy, SEO prioritization, and digital experience improvements.
 
-Data Sources:
+This phase focused on understanding how customers research products, solutions, and industry topics before engaging with a website.
 
-* Similarweb
+#### Data Sources
 
-* Search intelligence platforms
-* Keyword trend datasets
-* Search demand reports
+* Similarweb Search Intelligence
+* Keyword Demand Analysis
 * Trending Keywords
-* Questions Queries
+* Customer Question Analysis
+* Search Demand Datasets
 
+#### Key Business Questions
 
-Key Questions:
+* Which topics and solutions are generating the highest search demand?
+* What emerging trends are influencing customer research behavior?
+* What questions are customers actively seeking answers to?
+* Which product categories generate the greatest market interest?
+* Where do opportunities exist to improve content discoverability and customer engagement?
 
-* What topics are gaining demand?
-* What questions are customers asking?
-* Which product categories generate the most interest?
+#### Outcome
+
+The analysis provided a demand-driven view of customer behavior, helping translate market search trends into actionable recommendations for content strategy, SEO initiatives, and digital experience optimization.
 
 ---
 
-### Stage 2: External Search Analysis
+## Stage 2: External Search Analysis
 
-Objective:
+#### Business Objective
 
-Understand how customers discover digital properties through search engines.
+Evaluate how customers discover digital properties through organic search and identify the search topics, queries, and trends driving visibility and acquisition.
 
-Data Sources:
+This phase focused on understanding customer intent at the search engine level and measuring how effectively content aligned with market demand.
+
+#### Data Sources
 
 * Google Search Console
 
-Key Questions:
+#### Key Business Questions
 
-* Which queries drive visibility?
-* Which topics generate organic traffic?
-* How is search performance evolving over time?
+* Which search queries contribute the greatest organic visibility?
+* What topics and themes are driving organic traffic acquisition?
+* How is organic search performance evolving over time?
+* Which search opportunities can support future content and SEO initiatives?
+* How effectively does organic search demand translate into website visits?
+
+#### Outcome
+
+The analysis provided visibility into customer discovery behavior, highlighting the search topics and queries most responsible for driving organic traffic. These insights helped identify areas for content optimization, SEO prioritization, and improved alignment between search demand and website content.
 
 ---
 
-### Stage 3: On-Site Search Analysis
+## Stage 3: On-Site Search Analysis
 
-Objective:
+#### Business Objective
 
-Understand customer intent after arriving on the website.
+Understand visitor intent after arriving on the website by analyzing internal search behavior, content discovery patterns, and information needs across different regions and languages.
 
-Data Sources:
+This phase focused on identifying what users were unable to find immediately through navigation and which topics required further exploration, support, or guidance.
 
-* Google Analytics 4
+#### Data Sources
 
-Key Questions:
+* Google Analytics 4 (GA4)
 
-* What information are users seeking?
-* Which topics require additional content support?
-* What patterns exist across regions and languages?
+#### Key Business Questions
+
+* What information are visitors actively searching for on the website?
+* Which products, solutions, or topics generate the highest internal search demand?
+* Where do content gaps or discoverability challenges exist?
+* How does search behavior vary across regions and languages?
+* What opportunities exist to improve content accessibility and user experience?
+
+#### Outcome
+
+The analysis provided direct insight into customer information needs after website entry, revealing the topics, products, and support resources most frequently sought by users. These findings helped identify opportunities to enhance content discoverability, improve user experience, and better align website resources with customer intent.
 
 ---
 
 ## Framework
 
+### Search Intelligence Framework
+
 Market Demand
+(Similarweb)
 
 ↓
 
-Search Discovery
+Search Discovery & Visibility
+(Google Search Console)
 
 ↓
 
 On-Site Search Behaviour
+(Google Analytics 4)
 
 ↓
 
@@ -113,7 +139,7 @@ Customer Intent
 
 ↓
 
-Content & Experience Opportunities
+Content, SEO & Experience Opportunities
 
 ---
 
@@ -173,10 +199,13 @@ The most valuable insights emerged from connecting datasets and identifying patt
 
 ## Future Opportunities
 
-Potential enhancements to this framework include:
+While this framework focuses on understanding customer demand across market search behavior, organic discovery, and on-site search activity, there are several opportunities to expand the analysis further.
 
-* Automated reporting pipelines
-* Search demand forecasting
-* Topic clustering using AI
-* Competitive search benchmarking
-* Content gap analysis
+### Potential Enhancements
+
+- Automate data collection and reporting workflows to reduce manual effort
+- Develop search demand forecasting models to identify emerging trends earlier
+- Introduce topic and intent analysis to better understand customer interests and content themes
+- Add competitor benchmarking to compare visibility and demand across the market
+- Conduct content gap analysis to identify opportunities for new or improved content
+- Explore audience segmentation to understand how search behavior differs across regions and user groups

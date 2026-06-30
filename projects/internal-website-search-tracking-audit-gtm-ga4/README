@@ -1,0 +1,108 @@
+# Search Tracking Audit & Rebuild — GTM + GA4
+
+**Type:** Analytics Implementation Audit & Remediation  
+**Tools:** Google Tag Manager, Google Analytics 4, JavaScript  
+**Scope:** Two domains, two separate GTM containers, two GA4 properties  
+**Status:** FAQ and Downloads tracking live. Main search pending developer implementation.
+
+---
+
+## Contents
+- [Overview](#overview)
+- [The Problem](#the-problem)
+- [What Was Fixed](#what-was-fixed)
+- [The Solution](#the-solution)
+- [Key Technical Decisions](#key-technical-decisions)
+- [Skills Demonstrated](#skills-demonstrated)
+- [Repo Structure](#repo-structure)
+- [Context](#context)
+
+---
+
+## Overview
+
+Inherited search tracking from a previous analytics consultancy across a multi-property e-commerce site. On audit, tracking was found to be broken or unreliable across every search surface — despite data appearing to flow into GA4.
+
+Every bug was diagnosed and fixed independently in GTM and GA4, with no developer dependency for the client-side fixes. One remaining gap (main search) was scoped into a formal developer ticket rather than worked around with another fragile patch.
+
+---
+
+## The Problem
+
+The previous setup used GTM's generic auto-event listeners (Form Submit, Element Visibility, Click) instead of explicit dataLayer pushes from the application. This meant:
+
+- GTM was **guessing** at user behavior by reacting to browser events — not being told by the application what actually happened
+- Search terms appeared in GA4 only because a separate URL-parsing variable happened to read them from the address bar — the tracking event itself carried no search data
+- There was **no way to detect zero-results searches** at all
+- Tags were firing on page load, on empty queries, and on every click — not on actual search interactions
+- All QA and testing traffic was polluting live reports with no internal traffic filtering in place
+
+---
+
+## What Was Fixed
+
+| Surface | Inherited State | Outcome |
+|---|---|---|
+| FAQ search | Tag fired on page Initialization, `search_term` always empty | ✅ Fixed in GTM |
+| FAQ zero-results detection | Built on a persistent "contact us" CTA element — present on every page regardless of results | ✅ Identified as flawed, replaced with DOM-based result count detection |
+| Empty query parameter | `contains query=` matched `?query=` with no value, misfiring on default page loads | ✅ Fixed with regex |
+| Result-click tracking | Fired on any click anywhere on a search page — not scoped to actual result clicks | ✅ Identified as broken, paused |
+| Downloads search | Proper dataLayer push already in place | ✅ Confirmed working, no changes |
+| GA4 reporting hygiene | No internal traffic filter — QA/testing data polluting reports | ✅ Internal Traffic + Data Filter configured |
+| Second property/container | Separate GTM container and GA4 property — fixes don't propagate automatically | ✅ Every fix independently re-applied |
+| Main search | GTM Form Submit auto-event — no result count, no zero-results detection | ⏳ Diagnosed, developer ticket written |
+
+---
+
+## The Solution
+
+Replaced fragile auto-event guesswork with one consistent, outcome-aware event schema:
+
+```javascript
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: 'search_performed',
+  search_term: '<query>',
+  search_context: 'main' | 'faq' | 'downloads',
+  search_result_count: <number>,
+  search_has_results: <true|false>,
+  search_method: 'text_input' | 'filter',
+  filter_name: '',
+  filter_value: ''
+});
+```
+
+For surfaces where no application-level push was available (FAQ), the same parameters were implemented client-side in GTM using Custom JavaScript variables reading from the page DOM, with precise URL-based triggering to prevent misfires.
+
+---
+
+## Key Technical Decisions
+
+**One event, not many**  
+`search_context` differentiates the surface. This keeps GA4 reporting unified — adding a new search surface in future requires no new GTM tags, just a new `search_context` value.
+
+**Why not patch the existing auto-event setup?**  
+Patching would have left the fundamental problem in place. The goal was tracking that a new analyst could audit in six months and understand immediately — not a setup requiring tribal knowledge to maintain.
+
+**Why not wait for the developer to fix everything?**  
+The FAQ surface had everything needed in the URL and DOM to implement this correctly in GTM without a developer. Filing a ticket for FAQ would have introduced a sprint dependency, delayed reporting, and still left a DOM-fragile result. The URL-based approach is more reliable for FAQ since the search term is structurally encoded in the URL by the platform — it cannot disappear without breaking the search functionality itself.
+
+**Zero-results detection**  
+The original implementation used element visibility on a "Didn't find what you're looking for?" block, which appeared to work in initial testing. On further inspection, that element renders on every FAQ page regardless of result count — it's a persistent contact CTA, not a conditional state. Replaced with a Custom JavaScript variable reading the actual `.resultCounter` DOM element directly.
+
+---
+
+## Skills Demonstrated
+
+- Full GTM container audit across multiple containers and properties
+- Root cause diagnosis of silently broken tracking (data flowing to GA4 but incorrect)
+- Custom JavaScript variable authoring for DOM-based data extraction
+- Regex-based trigger scoping to prevent edge-case misfires
+- GA4 custom dimension strategy and zero-results reporting setup
+- Internal traffic filtering configuration
+- Multi-property rollout — independently replicating fixes across separate containers
+- Developer ticket writing with precise schema specification and technical rationale
+
+---
+
+## Repo Structure

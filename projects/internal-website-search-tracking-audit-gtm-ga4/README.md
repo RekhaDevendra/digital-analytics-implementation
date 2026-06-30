@@ -104,5 +104,3 @@ The original implementation used element visibility on a "Didn't find what you'r
 - Developer ticket writing with precise schema specification and technical rationale
 
 ---
-
-## Repo Structure

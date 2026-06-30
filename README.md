@@ -133,3 +133,8 @@ Most projects in this repository follow a consulting-style implementation proces
 ## About
 
 This repository serves as a portfolio of measurement implementations and analytics engineering projects, documenting both technical execution and the strategic thinking behind each solution.
+
+---
+
+## License
+© 2026 Rekha Devendra. See [LICENSE](./LICENSE.md) for permitted use.

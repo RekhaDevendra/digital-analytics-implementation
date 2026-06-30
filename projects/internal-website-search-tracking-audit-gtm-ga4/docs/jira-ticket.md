@@ -1,7 +1,5 @@
 # JIRA Ticket — Search Analytics: Main Search dataLayer Implementation + Zero Results UX Fix
 
-Reference: SCHREP-107
-
 ## Background
 
 We have been auditing and improving our search tracking across schluter.com and .ca as part of the Intentive search improvement project. After a full GTM audit we found:

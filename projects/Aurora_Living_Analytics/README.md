@@ -18,6 +18,7 @@
 7. GTM implementation plan
 8. QA & testing plan
 9. Reporting requirements
+10. Cookie Consent Implementation
 
 ### Working principle
 
@@ -33,6 +34,7 @@ The measurement plan is intentionally separate from the technical tag implementa
 - [x] KPI framework
 - [x] Event taxonomy
 - [x] Data Layer specification
+- [x] Strategy and Consent Management Complete
 - [ ] GTM implementation
 - [ ] QA evidence
 - [ ] Reporting build

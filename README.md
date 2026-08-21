@@ -104,6 +104,51 @@ projects/downloads-search-tracking
 
 ---
 
+### Interactive Estimator Interaction Tracking
+
+Designed a reusable GA4 + GTM measurement framework for a multi-step interactive estimator to understand when users seek additional guidance.
+
+#### Business Questions
+
+* Do users use Help, Tutorial, or Video Guidance?
+* At which estimator step do these interactions happen?
+* Which question was visible when guidance was requested?
+* Can nested clicks be captured without duplicate events?
+
+#### Tracked Interactions
+
+* `estimator_help_click`
+* `estimator_tutorial_click`
+* `estimator_video_guidance_click`
+
+#### Key Parameters
+
+* `interaction_type`
+* `question_number`
+* `question_text`
+* `click_text`
+* `estimator_type`
+* `estimator_choice` when reliably available
+
+#### Skills Demonstrated
+
+* GA4 Event Architecture
+* GTM Click Trigger Design
+* CSS Selector Targeting
+* Data Layer Auditing
+* DOM Inspection
+* DebugView Validation
+* Analytics QA
+* Event Taxonomy Design
+
+📁 Location:
+
+projects/estimator-interaction-tracking
+
+> **Portfolio note:** This case study is anonymized and contains no production company measurement IDs, domains, customer data, proprietary code, credentials, or production configuration exports.
+
+---
+
 ## Implementation Methodology
 
 Most projects in this repository follow a consulting-style implementation process:
